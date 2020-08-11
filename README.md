@@ -1,12 +1,12 @@
 # MatrixConv
 
-`MatrixConv` is a graph convolutional filter for graphs where the node features are n-dimensional matrices, such as 2D or 3D images, such as a [scene graph](https://en.wikipedia.org/wiki/Scene_graph). The filter applies a (non-graph) convolution, i.e. `torch.nn.Conv{1/2/3}d`, to transform the node features. Node embeddings are updated like so:
+`MatrixConv` is a graph convolutional filter for graphs where the node features are n-dimensional matrices, such as 2D or 3D images, such as a [scene graph](https://en.wikipedia.org/wiki/Scene_graph). The filter applies a (non-graph) convolution, i.e. [`torch.nn.Conv{1/2/3}d`](https://pytorch.org/docs/stable/nn.html#torch.nn.Conv1d), to transform the node features. Node embeddings are updated like so:
 
 <p align="center">
     <img src="assets/equation.png" width="47%" />
 </p>
 
-Where _&phi;<sub>r</sub>_ and _&phi;<sub>m</sub>_ are CNNs ([`torch.nn.Conv{1/2/3}d`](https://pytorch.org/docs/stable/nn.html#torch.nn.Conv1d)), and _W<sub>e</sub>_ is a weight matrix.
+Where _&phi;<sub>r</sub>_ and _&phi;<sub>m</sub>_ are CNNs, and _W<sub>e</sub>_ is a weight matrix.
 
 ## Installation
 
