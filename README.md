@@ -1,6 +1,6 @@
 # MatrixConv
 
-`MatrixConv` is a graph convolutional filter for graphs where the node features are n-dimensional matrices, such as 2D or 3D images, rather than vectors. [Scene graphs](https://en.wikipedia.org/wiki/Scene_graph) are good examples of such graphs. The filter applies a (non-graph) convolution, i.e. `torch.nn.Conv{1/2/3}d`, to transform the node features. Node embeddings are updated like so:
+`MatrixConv` is a graph convolutional filter for graphs where the node features are n-dimensional matrices, such as 2D or 3D images, rather than vectors. [Scene graphs](https://en.wikipedia.org/wiki/Scene_graph) are good example. The filter applies a (non-graph) convolution, i.e. `torch.nn.Conv{1/2/3}d`, to transform the node features. Node embeddings are updated like so:
 
 <p align="center">
     <img src="assets/equation.png" width="47%" />
@@ -22,15 +22,15 @@ $ pip install matrix_conv
 
 **Parameters:**
 
-* **in_channels** (_int_): Number of channels in the input node matrix (e.g. if each node's features is a 3x5 matrix with 2 input channels, then `in_channels=2`)
-* **out_channels** (_int_): Number of channels in the output node embedding
-* **matrix_dims** (_list_ or _tuple_): Dimensions of matrix associated with node (e.g. if each node's features is a 3x5 matrix, then `matrix_dims=[3, 5]`)
-* **num_edge_attr** (_int_): Number of edge attributes/features
-* **kernel_dims** (_list_ or _tuple_): Dimensions of the convolving kernel in the CNN
-* **aggr** (_string_, _optional_): The message aggregation scheme to use ("add", "mean", "max")
-* **root_cnn** (_bool_, _optional_): If set to `False`, the layer will not add the CNN-transformed root node features to the output
-* **bias** (_bool_, _optional_): If set to `False`, the layer will not learn an additive bias
-* **\*\*kwargs** (_optional_): Additional arguments for `torch.nn.Conv{1/2/3}d`
+- **in_channels** (_int_): Number of channels in the input node matrix (e.g. if each node's features is a 3x5 matrix with 2 input channels, then `in_channels=2`)
+- **out_channels** (_int_): Number of channels in the output node embedding
+- **matrix_dims** (_list_ or _tuple_): Dimensions of matrix associated with node (e.g. if each node's features is a 3x5 matrix, then `matrix_dims=[3, 5]`)
+- **num_edge_attr** (_int_): Number of edge attributes/features
+- **kernel_dims** (_list_ or _tuple_): Dimensions of the convolving kernel in the CNN
+- **aggr** (_string_, _optional_): The message aggregation scheme to use ("add", "mean", "max")
+- **root_cnn** (_bool_, _optional_): If set to `False`, the layer will not add the CNN-transformed root node features to the output
+- **bias** (_bool_, _optional_): If set to `False`, the layer will not learn an additive bias
+- **\*\*kwargs** (_optional_): Additional arguments for `torch.nn.Conv{1/2/3}d`
 
 **Example Usage:**
 
@@ -59,4 +59,4 @@ edge_attr = torch.randn((4, 3), dtype=torch.float)
 x = conv_layer(x, edge_index, edge_attr) # Shape is now [3, 10, 4, 3, 3]
 ```
 
-TODO: Show usage example in a graph classifier (include stacking)
+**To-Do:** Show example of using this in a graph classifier (include stacking)
